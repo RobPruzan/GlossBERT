@@ -147,7 +147,7 @@ def infer(input, target_start_id, target_end_id, args):
     input_mask = input_mask.to(device)
     segment_ids = segment_ids.to(device)
     with torch.no_grad():
-        logits = model(input_ids=input_ids, token_type_ids=segment_ids, attention_mask=input_mask, labels=None)
+        logits = model(input_ids=input_ids, token_type_ids=segment_ids, attention_mask=input_mask, labels=None).logits
     logits_ = F.softmax(logits, dim=-1)
     logits_ = logits_.detach().cpu().numpy()
     output = np.argmax(logits_, axis=0)[1]
