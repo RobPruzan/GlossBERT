@@ -161,7 +161,7 @@ if  __name__ == "__main__":
     parser.add_argument("--bert_model", default="./Sent_CLS_WS", type=str)
     parser.add_argument("--no_cuda", default=False, action='store_true', help="Whether not to use CUDA when available")
 
-    args = parser.parse_args()
+    args, unknown = parser.parse_known_args()
 
 
 
